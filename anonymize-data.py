@@ -1,10 +1,10 @@
 """
-This script reads a CSV file containing a 'userName' column and adds a new 'uniqueId' column to the file. The 'uniqueId' column contains a unique number for each unique 'userName' value in the original file. The updated CSV file is saved with a 'new_' prefix in the same directory as the original file.
+This script reads a CSV file containing a 'userName' column and adds a new 'uniqueId' column to the file. The 'uniqueId' column contains a unique number for each unique 'userName' value in the original file. The updated CSV file is saved with a 'anon_' prefix in the same directory as the original file.
 
 Functions:
 ----------
 add_unique_numbers(file_name):
-    Reads a CSV file and adds a new 'uniqueId' column to the file. The 'uniqueId' column contains a unique number for each unique 'userName' value in the original file. The updated CSV file is saved with a 'new_' prefix in the same directory as the original file.
+    Reads a CSV file and adds a new 'uniqueId' column to the file. The 'uniqueId' column contains a unique number for each unique 'userName' value in the original file. The updated CSV file is saved with a 'anon_' prefix in the same directory as the original file.
 
     Parameters:
     -----------
@@ -26,12 +26,12 @@ def add_unique_numbers(file_name):
     user_numbers = {}
     
     # Prepare the new file path
-    new_file_name = 'new_' + file_name
-    new_file_path = os.path.join(script_dir, new_file_name)
+    anon_file_name = 'anon_' + file_name
+    anon_file_path = os.path.join(script_dir, anon_file_name)
     
-    with open(file_path, 'r') as file, open(new_file_path, 'w', newline='') as new_file:
+    with open(file_path, 'r') as file, open(anon_file_path, 'w', newline='') as anon_file:
         reader = csv.reader(file)
-        writer = csv.writer(new_file)
+        writer = csv.writer(anon_file)
         header = next(reader)  # Read the header row
         
         # Find the index of the 'userName' column
@@ -56,7 +56,7 @@ def add_unique_numbers(file_name):
             # Write the updated row to the new file
             writer.writerow(row)
             
-    print(f"New CSV file '{new_file_name}' has been created.")
+    print(f"New CSV file '{anon_file_name}' has been created.")
 
 # Example usage
 csv_file_name = 'file_name.csv'
